@@ -39,6 +39,4 @@ public class AzureController {
     public void delete(@RequestParam String containerName, @RequestParam String blobName){
         azureBlobAdapter.deleteBlob(containerName, blobName);
     }
-
-
 }

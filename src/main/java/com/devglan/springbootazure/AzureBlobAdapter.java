@@ -12,6 +12,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @Slf4j
 @Component
@@ -48,7 +49,8 @@ public class AzureBlobAdapter {
         try {
 
             blob = cloudBlobContainer.
-                    getBlockBlobReference(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+                    getBlockBlobReference(UUID.randomUUID() +
+                            Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
             blob.getProperties().setContentType(multipartFile.getContentType());
 
