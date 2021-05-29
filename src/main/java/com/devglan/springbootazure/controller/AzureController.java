@@ -1,7 +1,6 @@
 package com.devglan.springbootazure.controller;
 
 import com.devglan.springbootazure.AzureBlobAdapter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +12,11 @@ import java.util.List;
 @RequestMapping("/api/v1/user/image")
 public class AzureController {
 
-    @Autowired
-    private AzureBlobAdapter azureBlobAdapter;
+    private final AzureBlobAdapter azureBlobAdapter;
+
+    public AzureController( AzureBlobAdapter azureBlobAdapter ) {
+        this.azureBlobAdapter = azureBlobAdapter;
+    }
 
     @PostMapping("/container")
     public void createContainer(@RequestBody String containerName){
